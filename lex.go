@@ -23,14 +23,17 @@ type Scanner struct {
 	lastChar rune
 }
 
-func (s *Scanner) Init(src []byte) {
-	s.src = src
-	s.pos = 0
+func newScanner(src []byte) *Scanner {
+	s := &Scanner{
+		src: src,
+		pos: 0,
+	}
 	if len(src) > 0 {
 		s.lastChar = rune(src[0])
 	} else {
 		s.lastChar = EOF
 	}
+	return s
 }
 
 func (s *Scanner) error(e string) {
