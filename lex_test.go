@@ -7,7 +7,7 @@ import (
 )
 
 func lex(src string) (tokens string, err error) {
-	sc := newScanner([]byte(src))t
+	sc := newScanner([]byte(src))
 
 	var (
 		buf bytes.Buffer
