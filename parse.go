@@ -4,14 +4,14 @@ package main
 
 import (
 	"fmt"
-	//"tinygo.org/x/go-llvm"
+	"tinygo.org/x/go-llvm"
 )
 
 // AST
 type (
 	ExprAST interface {
 		exprNode()
-		//codeGen(*CodeGen) llvm.Value
+		codeGen(*CodeGen) llvm.Value
 	}
 
 	NumberExprAST struct {
