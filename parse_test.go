@@ -62,7 +62,21 @@ func TestParse(t *testing.T) {
 	for _, test := range []struct {
 		input, want string
 	}{
-		{`print(1)`, `(FunctionAST Proto=(PrototypeAST Name=__anon) Body=(CallExprAST Callee=print Args=((NumberExprAST Val=1))))`},
+		{
+			`sin(1)`,
+			`(FunctionAST Proto=(PrototypeAST Name=__anon) Body=(CallExprAST Callee=sin Args=((NumberExprAST Val=1))))`},
+		{
+			`def foo(a b) a + foo(b, 4.0)`,
+			`(FunctionAST Proto=(PrototypeAST Name=foo Args=(a b)) Body=(BinaryExprAST Op=+ LHS=(VariableExprAST Name=a) RHS=(CallExprAST Callee=foo Args=((VariableExprAST Name=b) (NumberExprAST Val=4.0)))))`},
+		{
+			`extern sin(a)`,
+			`(PrototypeAST Name=sin Args=(a))`},
+		{
+			`x + y`,
+			`(FunctionAST Proto=(PrototypeAST Name=__anon) Body=(BinaryExprAST Op=+ LHS=(VariableExprAST Name=x) RHS=(VariableExprAST Name=y)))`},
+		{
+			`4+(3*4-5)-4`,
+			`(FunctionAST Proto=(PrototypeAST Name=__anon) Body=(BinaryExprAST Op=- LHS=(BinaryExprAST Op=+ LHS=(NumberExprAST Val=4) RHS=(BinaryExprAST Op=- LHS=(BinaryExprAST Op=* LHS=(NumberExprAST Val=3) RHS=(NumberExprAST Val=4)) RHS=(NumberExprAST Val=5))) RHS=(NumberExprAST Val=4)))`},
 	} {
 		p := &Parser{}
 		p.Init([]byte(test.input))
