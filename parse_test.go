@@ -88,11 +88,3 @@ func TestParse(t *testing.T) {
 
 	}
 }
-
-//func main() {
-//	test := "def foo(a b) b + foo(a,3)"
-//	p := &Parser{}
-//	p.Init([]byte(test))
-//	res := p.ParseTopLevel()
-//	fmt.Println(treeString(res))
-//}
