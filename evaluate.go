@@ -89,12 +89,3 @@ func (e *Evaluator) Evaluate(code string) float64 {
 	retFloat := ret.Float(e.cg.ctx.DoubleType())
 	return retFloat
 }
-
-func main() {
-	e := NewEvaluator()
-	e.Evaluate("def foo(a b) a+b")
-	fmt.Println(e.Evaluate("foo(3,5)"))
-	fmt.Println(e.Evaluate("foo(3,8)"))
-	e.Evaluate("def bar(c d) foo(c,d) + d")
-	fmt.Println(e.Evaluate("foo(3,5) + bar(3,5);"))
-}
