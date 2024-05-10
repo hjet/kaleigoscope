@@ -30,6 +30,14 @@ func (cg *CodeGen) error(e string) {
 	panic(e)
 }
 
+func (cg *CodeGen) resetModule() {
+	mod := cg.ctx.NewModule("")
+	cg.module = &mod
+	bu := cg.ctx.NewBuilder()
+	cg.builder = &bu
+	cg.symbolTable = make(map[string]llvm.Value)
+}
+
 func (cg *CodeGen) getFunction(name string) llvm.Value {
 	fun := cg.module.NamedFunction(name) // check if fn in module
 	if !fun.IsNil() {
