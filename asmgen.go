@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-// ASMGen generates ARMv8 A64 from an AST
+// ASMGen generates ARM64 from an AST
 // TODO: cleanup
 // TODO: add tests
 type ASMGen struct {
