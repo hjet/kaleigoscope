@@ -77,8 +77,8 @@ func (e *Evaluator) Evaluate(code string) float64 {
 		return 0
 	}
 
-	e.Optimize()
-	//e.PrintAsm()
+	//e.Optimize()
+	e.PrintAsm()
 
 	e.jit.AddModule(*e.cg.module)
 	e.cg.resetModule()

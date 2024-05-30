@@ -12,6 +12,7 @@ type (
 	ExprAST interface {
 		exprNode()
 		codeGen(*CodeGen) llvm.Value
+		asmGen(*ASMGen)
 	}
 
 	NumberExprAST struct {
